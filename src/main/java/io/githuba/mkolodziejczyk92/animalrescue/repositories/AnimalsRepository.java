@@ -1,14 +1,14 @@
 package io.githuba.mkolodziejczyk92.animalrescue.repositories;
 
 import io.githuba.mkolodziejczyk92.animalrescue.domain.Animal;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
+@Repository
+public interface AnimalsRepository extends MongoRepository<Animal, String> {
 
-public interface AnimalsRepository {
+    public Animal findAnimalById(String name);
+    public void deleteById(String id);
 
-    public void saveAnimal(Animal animal);
-    Animal findAnimal(String id);
-    List<Animal> findAllAnimals(Integer limit);
 
-    void deleteAnimal(String id);
 }
